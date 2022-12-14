@@ -33,9 +33,13 @@ const btnClose = document.querySelector('.modal__close')
 let pageNumber = 1
 const getMovies = async () => {
     try {
-        const responseDefault = await fetch('https://tmdb-proxy.cubos-academy.workers.dev/3/discover/movie?language=pt-BR&include_adult=false')
-        const dataDefault = await responseDefault.json()
-        let movies = dataDefault.results
+        // const responseDefault = await fetch('https://tmdb-proxy.cubos-academy.workers.dev/3/discover/movie?language=pt-BR&include_adult=false')
+        // const dataDefault = await responseDefault.json()
+        // let movies = dataDefault.results
+
+
+        const responseDefault = await api.get('https://tmdb-proxy.cubos-academy.workers.dev/3/discover/movie?language=pt-BR&include_adult=false')
+        let movies = responseDefault.data.results
 
 
 
@@ -78,8 +82,11 @@ const getMovies = async () => {
                     let idMovie = id
                     let urlModalMovie = `https://tmdb-proxy.cubos-academy.workers.dev/3/movie/${idMovie}?language=pt-BR`
 
-                    const responseModal = await fetch(urlModalMovie)
-                    const dataModal = await responseModal.json()
+                    // const responseModal = await fetch(urlModalMovie)
+                    // const dataModal = await responseModal.json()
+
+                    const responseModal = await api.get(urlModalMovie)
+                    const dataModal = responseModal.data
                     const { title, backdrop_path, overview, vote_average, genres } = dataModal
 
 
@@ -135,9 +142,14 @@ const getMovies = async () => {
 
                 let query = input.value
                 let urlApi = `https://tmdb-proxy.cubos-academy.workers.dev/3/search/movie?language=pt-BR&include_adult=false&query=${query}`
-                const responseSearch = await fetch(urlApi)
-                const dataSearch = await responseSearch.json()
-                let moviesSearched = dataSearch.results
+
+                // const responseSearch = await fetch(urlApi)
+                // const dataSearch = await responseSearch.json()
+                // let moviesSearched = dataSearch.results
+
+                const responseSearch = await api.get(urlApi)
+                let moviesSearched = responseSearch.data.results
+
 
                 pageNumber = PAGE_MIN
                 fillMovies(pageNumber, moviesSearched)
@@ -156,13 +168,21 @@ const getMovies = async () => {
 
 
         const fillHighlight = async () => {
-            const responseHighlight = await fetch('https://tmdb-proxy.cubos-academy.workers.dev/3/movie/436969?language=pt-BR')
-            const dataHighlight = await responseHighlight.json()
+            // const responseHighlight = await fetch('https://tmdb-proxy.cubos-academy.workers.dev/3/movie/436969?language=pt-BR')
+            // const dataHighlight = await responseHighlight.json()
+
+            const responseHighlight = await api.get('https://tmdb-proxy.cubos-academy.workers.dev/3/movie/436969?language=pt-BR')
+            const dataHighlight = responseHighlight.data
+
             const { title, vote_average, release_date, overview, genres, backdrop_path } = dataHighlight
 
-            const responseVideo = await fetch('https://tmdb-proxy.cubos-academy.workers.dev/3/movie/436969/videos?language=pt-BR')
-            const dataVideo = await responseVideo.json()
-            const videos = dataVideo.results
+            // const responseVideo = await fetch('https://tmdb-proxy.cubos-academy.workers.dev/3/movie/436969/videos?language=pt-BR')
+            // const dataVideo = await responseVideo.json()
+            // const videos = dataVideo.results
+
+            const responseVideo = await api.get('https://tmdb-proxy.cubos-academy.workers.dev/3/movie/436969/videos?language=pt-BR')
+            const videos = responseVideo.data.results
+
             const { key } = videos[0]
 
 

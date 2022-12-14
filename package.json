@@ -1,0 +1,23 @@
+{
+  "name": "desafio-frontend-m02-dds-t09",
+  "version": "1.0.0",
+  "description": "![](https://i.imgur.com/xG74tOh.png)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitordacio/desafio-frontend-m02-dds-t09.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitordacio/desafio-frontend-m02-dds-t09/issues"
+  },
+  "homepage": "https://github.com/vitordacio/desafio-frontend-m02-dds-t09#readme",
+  "dependencies": {
+    "axios": "^1.2.1"
+  }
+}
